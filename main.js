@@ -11,10 +11,15 @@ function HandleKeyDown(event){
     updateGame()
 }
 
- function updateGame(){
+ function GameLoop(){
     board.ctx.clearRect(0, 0, board.gameBoard.width, board.gameBoard.height);
+    player.update()
     player.CreatePlayer(board.ctx)
+    requestAnimationFrame(GameLoop)
  }
-window.addEventListener("keydown",HandleKeyDown)
+GameLoop()
+
+window.addEventListener("keydown",player.buttonPressed.bind(player))
+window.addEventListener("keyup", player.buttonReleased.bind(player))
 
 player.CreatePlayer(board.ctx)

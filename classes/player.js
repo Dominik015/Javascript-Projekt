@@ -1,7 +1,7 @@
 
 
 
-
+const keys = {}
 export class Player{
     constructor(x,y){
         this.x = x
@@ -14,19 +14,27 @@ export class Player{
         ctx.fillRect(this.x,this.y,20,20)
     }
 
-    ChangeDirection(event){
-        const key = event.key
+    update(event){
+        
 
-        if(key == "ArrowUp"){
+        if(keys["ArrowUp"]){
             this.y -= this.speed
-        }else if(key == "ArrowDown"){
+        }if(keys["ArrowDown"]){
             this.y += this.speed
-        }else if(key == "ArrowRight"){
+        }if(keys["ArrowRight"]){
             this.x += this.speed
-        }else if(key == "ArrowLeft"){
+        }if(keys["ArrowLeft"]){
             this.x -= this.speed
         }
+        
+        
 
+    }
+    buttonPressed(event){
+        keys[event.key] = true
+    }
+    buttonReleased(event){
+        keys[event.key] = false
     }
 
 }
