@@ -1,3 +1,5 @@
-export default class WaveManagement{
-    
+export class WaveManagement{
+    constructor(){
+        
+    }
 }

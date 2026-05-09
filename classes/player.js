@@ -1,4 +1,3 @@
-import { Board } from './board.js';
 
 
 
@@ -9,7 +8,7 @@ export class Player{
     constructor(x,y,board){
         this.x = x
         this.y = y
-        this.speed = 7
+        this.speed = 4
         this.PlayerWidht = 20
         this.playerHeight = 20
         this.BoardWidht = board.gameBoard.width
