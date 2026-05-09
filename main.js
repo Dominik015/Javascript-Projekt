@@ -1,9 +1,8 @@
 import { Board } from './classes/board.js';
 import { Player } from './classes/player.js';
 
-
 const board = new Board()
-const player = new Player(100, 100)
+const player = new Player(100, 100,board)
 
 
 function HandleKeyDown(event){
