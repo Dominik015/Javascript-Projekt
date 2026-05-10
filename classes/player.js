@@ -8,7 +8,7 @@ export class Player{
     constructor(x,y,board){
         this.x = x
         this.y = y
-        this.speed = 4
+        this.speed = 2
         this.PlayerWidht = 20
         this.playerHeight = 20
         this.BoardWidht = board.gameBoard.width
@@ -23,26 +23,35 @@ export class Player{
     }
 
     update(event){
-        
+        let dx = 0
+        let dy = 0
+
+
         if(this.y>0){
             if(keys["ArrowUp"]){
-                this.y -= this.speed
+                dy = -1
             }
         }
         if(this.y<this.BoardHeight-this.playerHeight){
             if(keys["ArrowDown"]){
-                this.y += this.speed
+                dy = 1
         }
         }
         if(this.x<this.BoardWidht-this.PlayerWidht){
             if(keys["ArrowRight"]){
-                this.x += this.speed
+                dx = 1
             }
         }
         if(this.x>0){
             if(keys["ArrowLeft"]){
-               this.x -= this.speed
+               dx = -1
             }
+        }
+
+        const dist = Math.sqrt(dx*dx+dy*dy)
+        if(dist>0){
+            this.x += (dx/dist) * this.speed
+            this.y += (dy/dist) * this.speed
         }
         
     }

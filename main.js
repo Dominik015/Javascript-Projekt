@@ -1,9 +1,11 @@
 import { Board } from './classes/board.js';
 import { Player } from './classes/player.js';
+import { WaveManagement } from './classes/WaveManagement.js';
 import Enemy from './classes/enemy.js' 
 const board = new Board()
 const player = new Player(100, 100,board)
 const enemy = new Enemy(board)
+const waveManagement = new WaveManagement(board)
 
 function HandleKeyDown(event){
     player.ChangeDirection(event)
@@ -15,7 +17,8 @@ function HandleKeyDown(event){
     player.update()
     player.CreatePlayer(board.ctx)
     enemy.update(player.x,player.y)
-    enemy.CreateEnemy(board.ctx)
+    waveManagement.update(player.x,player.y)
+    waveManagement.drawEnemy(board.ctx)
     requestAnimationFrame(GameLoop)
  }
 GameLoop()
@@ -24,3 +27,4 @@ window.addEventListener("keydown",player.buttonPressed.bind(player))
 window.addEventListener("keyup", player.buttonReleased.bind(player))
 enemy.CreateEnemy(board.ctx)
 player.CreatePlayer(board.ctx)
+waveManagement.drawEnemy(board.ctx)
