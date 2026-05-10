@@ -3,20 +3,23 @@ export class WaveManagement{
     constructor(board){
         this.board = board
         this.wave = 1
-        this.enemies = []
+        this.Allenemies = []
         this.spwanChance = 0.01
         this.enemyCount = 10
     }
 
     update(playerX,playerY){
-        
-        if(this.enemies.length<this.enemyCount){
+        //SHORTER
+        //this.enemies = this.enemies.filter(enemy=>enemy.hp>0)
+  
+
+        if(this.Allenemies.length<this.enemyCount){
             if(Math.random()<this.spwanChance){
-                this.enemies.push(new Enemy(this.board))
+                this.Allenemies.push(new Enemy(this.board))
             }
         }
 
-        for(let enemy of this.enemies){
+        for(let enemy of this.Allenemies){
             enemy.update(playerX,playerY)
         }
     }
@@ -28,7 +31,7 @@ export class WaveManagement{
     
 
     drawEnemy(ctx){
-        for(let enemy of this.enemies){
+        for(let enemy of this.Allenemies){
             enemy.CreateEnemy(ctx)
         }
     }
