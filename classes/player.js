@@ -13,7 +13,7 @@ export class Player{
         this.playerHeight = 20
         this.BoardWidht = board.gameBoard.width
         this.BoardHeight = board.gameBoard.height
-
+        this.hp = 10
     }
 
     CreatePlayer(ctx){

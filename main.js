@@ -7,10 +7,7 @@ const player = new Player(100, 100,board)
 const enemy = new Enemy(board)
 const waveManagement = new WaveManagement(board)
 
-function HandleKeyDown(event){
-    player.ChangeDirection(event)
-    updateGame()
-}
+
 
  function GameLoop(){
     board.ctx.clearRect(0, 0, board.gameBoard.width, board.gameBoard.height);
