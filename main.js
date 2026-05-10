@@ -25,6 +25,3 @@ GameLoop()
 
 window.addEventListener("keydown",player.buttonPressed.bind(player))
 window.addEventListener("keyup", player.buttonReleased.bind(player))
-enemy.CreateEnemy(board.ctx)
-player.CreatePlayer(board.ctx)
-waveManagement.drawEnemy(board.ctx)

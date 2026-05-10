@@ -5,6 +5,7 @@ export default class enemy{
         this.enemyWidht = 10
         this.enemyHeight = 10
         this.speed = 2
+        this.hp = 3
         //spawn
         const side = Math.floor(Math.random() * 4)
         if(side == 0){
