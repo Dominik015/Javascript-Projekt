@@ -11,7 +11,13 @@ export class WaveManagement{
     update(playerX,playerY){
         //SHORTER
         //this.enemies = this.enemies.filter(enemy=>enemy.hp>0)
-  
+        let enemies = []
+        for(let enemy of this.Allenemies){
+            if(enemy.hp>0){
+                enemies.push(enemy)
+            }
+        }
+        this.Allenemies = enemies
 
         if(this.Allenemies.length<this.enemyCount){
             if(Math.random()<this.spwanChance){
