@@ -1,6 +1,4 @@
-import { WaveManagement } from './classes/WaveManagement.js';
 
-const waveManagement = WaveManagement
 const keys = {}
 export class Player{
     constructor(x,y,board){
@@ -16,6 +14,8 @@ export class Player{
         this.xpToLevelUp = 100
         this.level = 0
         this.dmg = 3
+        this.isLvlUp = false
+        this.lvlUpCards = []
     }
 
     CreatePlayer(ctx){
@@ -61,6 +61,7 @@ export class Player{
     levelUp(xp){
         this.xp += xp
         if(this.xp >= this.xpToLevelUp){
+            this.isLvlUp = true
             this.xp = 0
             this.xpToLevelUp += 50
             this.level += 1
@@ -72,6 +73,19 @@ export class Player{
     }
     buttonReleased(event){
         keys[event.key] = false
+    }
+
+    ChooseBuff(event){
+        if(this.isLvlUp){
+            if(event.key == "1"){
+                this.lvlUpCards[0].effect(this)
+            }
+            else if(event.key == "2"){
+                this.lvlUpCards[1].effect(this)
+            } else if(event.key == "3"){
+                this.lvlUpCards[2].effect(this)
+            }
+        }
     }
 
 }

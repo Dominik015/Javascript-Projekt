@@ -16,6 +16,8 @@ export class WaveManagement{
         for(let enemy of this.Allenemies){
             if(enemy.hp>0){
                 enemies.push(enemy)
+            }else{
+                this.killedNemeyCount++
             }
         }
         this.Allenemies = enemies
