@@ -6,6 +6,7 @@ export class WaveManagement{
         this.Allenemies = []
         this.spwanChance = 0.01
         this.enemyCount = 10
+        this.killedNemeyCount = 0
     }
 
     update(playerX,playerY){

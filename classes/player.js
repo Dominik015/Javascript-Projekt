@@ -1,8 +1,6 @@
+import { WaveManagement } from './classes/WaveManagement.js';
 
-
-
-
-
+const waveManagement = WaveManagement
 const keys = {}
 export class Player{
     constructor(x,y,board){
@@ -14,6 +12,10 @@ export class Player{
         this.BoardWidht = board.gameBoard.width
         this.BoardHeight = board.gameBoard.height
         this.hp = 10
+        this.xp = 0
+        this.xpToLevelUp = 100
+        this.level = 0
+        this.dmg = 3
     }
 
     CreatePlayer(ctx){
@@ -54,6 +56,15 @@ export class Player{
             this.y += (dy/dist) * this.speed
         }
         
+    }
+
+    levelUp(xp){
+        this.xp += xp
+        if(this.xp >= this.xpToLevelUp){
+            this.xp = 0
+            this.xpToLevelUp += 50
+            this.level += 1
+        }
     }
 
     buttonPressed(event){
