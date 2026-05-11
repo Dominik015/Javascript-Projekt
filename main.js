@@ -34,6 +34,6 @@ const waveManagement = new WaveManagement(board)
 GameLoop()
 
 
-
+window.addEventListener("keydown",player.ChooseBuff.bind(player))
 window.addEventListener("keydown",player.buttonPressed.bind(player))
 window.addEventListener("keyup", player.buttonReleased.bind(player))
