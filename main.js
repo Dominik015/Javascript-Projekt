@@ -18,6 +18,7 @@ let gamestarted = false
 const playbutton = document.getElementById("playButton")
 const resetbutton = document.getElementById("Reset")
 let php = document.getElementById("hp")
+let pdmg = document.getElementById("dmg")
 
 
 
