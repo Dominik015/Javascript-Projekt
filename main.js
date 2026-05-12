@@ -3,28 +3,33 @@ import { Player } from './classes/player.js';
 import { WaveManagement } from './classes/WaveManagement.js';
 import Enemy from './classes/enemy.js' 
 import { LevelUp } from './classes/LeveUp.js';
-
+import Projectile from './classes/projectile.js';
+import { ProjectileManager } from './classes/ProjectileManager.js';
 
 const levelUp = LevelUp
 const board = new Board()
 const player = new Player(100, 100,board)
 const enemy = new Enemy(board)
 const waveManagement = new WaveManagement(board)
+const projectileManager = new ProjectileManager()
 
 
-
- function GameLoop(){
+  function GameLoop(){
     board.ctx.clearRect(0, 0, board.gameBoard.width, board.gameBoard.height);
     
     player.update()
     player.CreatePlayer(board.ctx)
-    player.LevelUp(waveManagement.killedNemeyCount)
+    player.levelUp(waveManagement.killedNemeyCount)
     waveManagement.killedNemeyCount = 0
 
     if(player.isLvlUp){
       player.lvlUpCards = levelUp.GetRandomCards()
       player.isLvlUp = false
     }
+    
+    projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
+    projectileManager.drawBullets(board.ctx)
+
 
     enemy.update(player.x,player.y)
     waveManagement.update(player.x,player.y)

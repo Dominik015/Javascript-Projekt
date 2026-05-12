@@ -33,7 +33,7 @@ export default class enemy{
     }
 
 
-    update(palyerX, playerY,){
+    update(palyerX, playerY){
         const dx = palyerX - this.x
         const dy = playerY - this.y
 
