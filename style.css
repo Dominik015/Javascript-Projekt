@@ -1,0 +1,35 @@
+/*meg semmi*/
+
+#content{
+    display: flex;
+    justify-content: center; /* Vízszintes középre */
+    position: absolute;
+    left: 25%;
+    top: 5%;
+}
+#Game{
+    display: flex;
+    align-content: center;
+    border: 3px solid black;
+}
+
+#GameContainer{
+    position: relative;  /* ← kell a gyerek pozicionáláshoz */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#PlayButton{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+#buffcards{
+    display: none;
+}
