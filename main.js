@@ -41,9 +41,8 @@ let IsPaused = false
     waveManagement.update(player.x,player.y)
     waveManagement.drawEnemy(board.ctx)
     }
-      if(player.IsBuffChoosen){
+      if(!player.isLvlUp){
         IsPaused = false
-        player.IsBuffChoosen = false
         console.log("UNPAUSED")
     }
     requestAnimationFrame(GameLoop)
