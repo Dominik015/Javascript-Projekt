@@ -95,5 +95,16 @@ document.getElementById("card1").addEventListener("click", function(){
   player.IsPaused = false
   document.getElementById("buffcards").style.display = "none"
 })
-
+document.getElementById("card2").addEventListener("click", function(){
+  player.lvlUpCards[1].effect(player)
+  player.isLvlUp = false
+  player.IsPaused = false
+  document.getElementById("buffcards").style.display = "none"
+})
+document.getElementById("card3").addEventListener("click", function(){
+  player.lvlUpCards[2].effect(player)
+  player.isLvlUp = false
+  player.IsPaused = false
+  document.getElementById("buffcards").style.display = "none"
+})
     
