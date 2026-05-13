@@ -16,6 +16,7 @@ export class Player{
         this.dmg = 3
         this.isLvlUp = false
         this.lvlUpCards = []
+        this.IsBuffChoosen = false
     }
 
     CreatePlayer(ctx){
@@ -79,11 +80,14 @@ export class Player{
         if(this.isLvlUp){
             if(event.key == "1"){
                 this.lvlUpCards[0].effect(this)
+                this.IsBuffChoosen = true
             }
             else if(event.key == "2"){
                 this.lvlUpCards[1].effect(this)
+                this.IsBuffChoosen = true
             } else if(event.key == "3"){
                 this.lvlUpCards[2].effect(this)
+                this.IsBuffChoosen = true
             }
         }
     }

@@ -6,13 +6,13 @@ import { LevelUp } from './classes/LeveUp.js';
 import Projectile from './classes/projectile.js';
 import { ProjectileManager } from './classes/ProjectileManager.js';
 
-const levelUp = LevelUp
+const levelUp = new LevelUp()
 const board = new Board()
 const player = new Player(100, 100,board)
 const enemy = new Enemy(board)
 const waveManagement = new WaveManagement(board)
 const projectileManager = new ProjectileManager()
-const IsPaused = false
+let IsPaused = false
 
   function GameLoop(){
     if(!IsPaused){
@@ -30,7 +30,10 @@ const IsPaused = false
       player.isLvlUp = false
       IsPaused = true
     }
-
+    if(player.IsBuffChoosen){
+      IsPaused = false
+      player.IsBuffChoosen = false
+    }
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
     projectileManager.drawBullets(board.ctx)
