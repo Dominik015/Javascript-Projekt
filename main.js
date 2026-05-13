@@ -27,13 +27,11 @@ let IsPaused = false
 
     if(player.isLvlUp){
       player.lvlUpCards = levelUp.GetRandomCards()
-      player.isLvlUp = false
+    
       IsPaused = true
+      console.log("PAUSED, cards:", player.lvlUpCards)
     }
-    if(player.IsBuffChoosen){
-      IsPaused = false
-      player.IsBuffChoosen = false
-    }
+
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
     projectileManager.drawBullets(board.ctx)
@@ -42,6 +40,11 @@ let IsPaused = false
     enemy.update(player.x,player.y)
     waveManagement.update(player.x,player.y)
     waveManagement.drawEnemy(board.ctx)
+    }
+      if(player.IsBuffChoosen){
+        IsPaused = false
+        player.IsBuffChoosen = false
+        console.log("UNPAUSED")
     }
     requestAnimationFrame(GameLoop)
  }
