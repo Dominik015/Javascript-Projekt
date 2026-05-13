@@ -7,6 +7,7 @@ export class WaveManagement{
         this.spwanChance = 0.01
         this.enemyCount = 10
         this.killedNemeyCount = 0
+        this.spawnEnemy = false
     }
 
     update(playerX,playerY){
@@ -24,6 +25,7 @@ export class WaveManagement{
 
         if(this.Allenemies.length<this.enemyCount){
             if(Math.random()<this.spwanChance){
+                this.spawnEnemy = true
                 this.Allenemies.push(new Enemy(this.board))
             }
         }

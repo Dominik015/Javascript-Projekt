@@ -7,7 +7,16 @@ export class ProjectileManager{
     }
 
     update(enemies,playerX,playerY,playerDmg){
-        if(this.shootCd>=60){
+        let AllProjectiles = []
+        for(let projectile of this.projectiles){
+            if(projectile.hp>0){
+                AllProjectiles.push(projectile)
+            }
+        }
+        this.projectiles = AllProjectiles
+
+        
+        if(this.shootCd>=60 && enemies.length > 0){
             this.projectiles.push(new Projectile(playerX,playerY,playerDmg))
             this.shootCd = 0
         }

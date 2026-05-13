@@ -12,9 +12,12 @@ const player = new Player(100, 100,board)
 const enemy = new Enemy(board)
 const waveManagement = new WaveManagement(board)
 const projectileManager = new ProjectileManager()
-
+const IsPaused = false
 
   function GameLoop(){
+    if(!IsPaused){
+
+    
     board.ctx.clearRect(0, 0, board.gameBoard.width, board.gameBoard.height);
     
     player.update()
@@ -25,7 +28,9 @@ const projectileManager = new ProjectileManager()
     if(player.isLvlUp){
       player.lvlUpCards = levelUp.GetRandomCards()
       player.isLvlUp = false
+      IsPaused = true
     }
+
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
     projectileManager.drawBullets(board.ctx)
@@ -34,6 +39,7 @@ const projectileManager = new ProjectileManager()
     enemy.update(player.x,player.y)
     waveManagement.update(player.x,player.y)
     waveManagement.drawEnemy(board.ctx)
+    }
     requestAnimationFrame(GameLoop)
  }
 GameLoop()

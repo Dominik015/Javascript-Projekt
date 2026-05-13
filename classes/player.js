@@ -11,7 +11,7 @@ export class Player{
         this.BoardHeight = board.gameBoard.height
         this.hp = 10
         this.xp = 0
-        this.xpToLevelUp = 100
+        this.xpToLevelUp = 10
         this.level = 0
         this.dmg = 3
         this.isLvlUp = false

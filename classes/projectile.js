@@ -6,6 +6,7 @@ export default class projectile{
         this.width = 5
         this.height = 5
         this.dmg = Dmg
+        this.hp = 1
 
     }
 
@@ -32,7 +33,13 @@ export default class projectile{
 
             this.x += (dx/dist) * this.speed
             this.y += (dy/dist) * this.speed
+
+            if(dist<15){
+                this.hp -=2
+                ClosestEnemy.hp -=3
+            }
         }
+
 
 
     }
