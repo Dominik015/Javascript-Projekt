@@ -22,6 +22,7 @@ let pdmg = document.getElementById("dmg")
 let pspeed = document.getElementById("speed")
 let enemyHealth = document.getElementById("enemyHealth")
 let enemyDamage = document.getElementById("enemyDamage")
+let wave = document.getElementById("wave")
 
 
 
@@ -33,6 +34,12 @@ let enemyDamage = document.getElementById("enemyDamage")
     pspeed.innerHTML = player.speed
     enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
     enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
+    if(waveManagement.Allenemies.length > 0){
+
+    enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
+    enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
+    }
+    wave.innerHTML = waveManagement.wave
     //else 
     if(!IsPaused && gamestarted == true){
 
