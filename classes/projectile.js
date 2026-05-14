@@ -47,7 +47,7 @@ export default class projectile{
 
     CreateBullet(ctx){
 
-        ctx.fillStyle = "black"
+        ctx.fillStyle = "white"
         ctx.fillRect(this.x,this.y,this.width,this.height)
     }
 }

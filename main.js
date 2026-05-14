@@ -11,7 +11,6 @@ const levelUp = new LevelUp()
 const board = new Board()
 const player = new Player(100, 100,board)
 
-const enemy = new Enemy(board)
 
 const waveManagement = new WaveManagement(board)
 const projectileManager = new ProjectileManager()
@@ -25,6 +24,7 @@ let pspeed = document.getElementById("speed")
 let enemyHealth = document.getElementById("enemyHealth")
 let enemyDamage = document.getElementById("enemyDamage")
 let wave = document.getElementById("wave")
+let bestwave = document.getElementById("bestWave")
 
 
 
@@ -35,18 +35,15 @@ let wave = document.getElementById("wave")
     php.innerHTML = player.hp
     pdmg.innerHTML = player.dmg
     pspeed.innerHTML = player.speed
-
-    if(waveManagement.Allenemies.length > 0){
-
-    enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
-    enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
-    }
+    bestwave.innerHTML = localStorage.getItem("bestWave") || 0
+    enemyHealth.innerHTML = waveManagement.enemyhpbuff + 3
+    enemyDamage.innerHTML = waveManagement.enemydamagebuff + 2
     wave.innerHTML = player.level
 
     //else 
     if(!IsPaused && gamestarted == true){
 
-    
+     
 
     
     player.update()
@@ -54,6 +51,16 @@ let wave = document.getElementById("wave")
     player.levelUp(waveManagement.killedNemeyCount)
     waveManagement.killedNemeyCount = 0
     let buffcards = document.getElementById("buffcards")
+
+    if(player.hp<=0){
+      let bestWave = localStorage.getItem("bestWave") || 0
+      if(bestWave<player.level){
+        localStorage.setItem("bestWave", player.level)
+      }
+      gamestarted = false
+      location.reload()
+    }
+
     if(player.isLvlUp){
       player.lvlUpCards = levelUp.GetRandomCards()
       let card1 = document.getElementById("card1")
@@ -68,11 +75,10 @@ let wave = document.getElementById("wave")
 
       IsPaused = true
       console.log("PAUSED, cards:", player.lvlUpCards)
+      console.log("player hp:", player.hp)
 
-
-      waveManagement.LevelUp()
       waveManagement.levelUp()
-
+ 
     }
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
@@ -84,16 +90,17 @@ let wave = document.getElementById("wave")
     waveManagement.update(player)
     waveManagement.drawEnemy(board.ctx)
 
- 
-    waveManagement.update(player.x,player.y)
-    waveManagement.drawEnemy(board.ctx)
-    waveManagement.spawnenemy()
+  
+   
 
     }
       if(!player.isLvlUp){
         IsPaused = false
         console.log("UNPAUSED")
     }
+
+
+ 
     requestAnimationFrame(GameLoop)
  }
 GameLoop()
@@ -112,19 +119,19 @@ resetbutton.addEventListener("click", function(){
 document.getElementById("card1").addEventListener("click", function(){
   player.lvlUpCards[0].effect(player)
   player.isLvlUp = false
-  player.IsPaused = false
+  IsPaused = false
   document.getElementById("buffcards").style.display = "none"
 })
 document.getElementById("card2").addEventListener("click", function(){
   player.lvlUpCards[1].effect(player)
   player.isLvlUp = false
-  player.IsPaused = false
+  IsPaused = false
   document.getElementById("buffcards").style.display = "none"
 })
 document.getElementById("card3").addEventListener("click", function(){
   player.lvlUpCards[2].effect(player)
   player.isLvlUp = false
-  player.IsPaused = false
+  IsPaused = false
   document.getElementById("buffcards").style.display = "none"
 })
 

@@ -8,6 +8,8 @@ export default class enemy{
         this.speed = 2
         this.hp = 3
         this.dmg = 2
+        this.dmgCd = 60
+        this.MaxHp = this.hp
         //spawn
         const side = Math.floor(Math.random() * 4)
         if(side == 0){
@@ -34,9 +36,9 @@ export default class enemy{
     }
 
 
-    update(palyerX, playerY,playerHp){
-        const dx = palyerX - this.x
-        const dy = playerY - this.y
+    update(player){
+        const dx = player.x - this.x
+        const dy = player.y - this.y
 
         const dist = Math.sqrt(dx*dx + dy*dy)
 
@@ -44,8 +46,12 @@ export default class enemy{
         this.y += (dy/dist) * this.speed
 
         if(dist < 15){
-            playerHp -= this.dmg
+            if(this.dmgCd<=0){
+                player.hp -= this.dmg 
+                this.dmgCd = 60
+            }
         }
+        this.dmgCd--
     }
 
 

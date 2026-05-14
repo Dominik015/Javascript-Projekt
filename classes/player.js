@@ -65,7 +65,7 @@ export class Player{
         if(this.xp >= this.xpToLevelUp){
             this.isLvlUp = true
             this.xp = 0
-            this.xpToLevelUp += 50
+            this.xpToLevelUp += 5
             this.level += 1
         }
     }

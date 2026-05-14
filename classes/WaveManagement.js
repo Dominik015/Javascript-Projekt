@@ -10,9 +10,10 @@ export class WaveManagement{
         this.spawnEnemy = false
         this.enemydamagebuff = 0
         this.enemyhpbuff = 0
+        
     }
 
-    update(playerX,playerY){
+    update(player){
         //SHORTER
         //this.enemies = this.enemies.filter(enemy=>enemy.hp>0)
         let enemies = []
@@ -28,18 +29,20 @@ export class WaveManagement{
         if(this.Allenemies.length<this.enemyCount){
             if(Math.random()<this.spwanChance){
                 this.spawnEnemy = true
-                this.Allenemies.push(new Enemy(this.board))
+                this.spawnenemy() 
             }
         }
 
         for(let enemy of this.Allenemies){
-            enemy.update(playerX,playerY)
+            enemy.update(player)
         }
     }
 
-    LevelUp(){
+    levelUp(){
         this.spwanChance+=0.005
         this.enemyCount+=5
+        this.enemyhpbuff +=2
+        this.enemydamagebuff += 2
         
     }
     
@@ -50,14 +53,13 @@ export class WaveManagement{
         }
     }
 
-        levelUp(){
-            this.enemyhpbuff +=2
-            this.enemydamagebuff += 2
-        }
+
 
         spawnenemy(){
             let newEnemy = new Enemy(this.board)
+            
             newEnemy.hp += this.enemyhpbuff
+            newEnemy.MaxHp = newEnemy.hp
             newEnemy.dmg += this.enemydamagebuff
             this.Allenemies.push(newEnemy)
         }

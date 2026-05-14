@@ -5,33 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="main.js"></script>
-    <title>Document</title>
+    <title>Void Survivors</title>
 </head>
 <body>
-    <h1>Player Stats:</h1><br>
-    <p>Health: <span id="hp"></span></p><br>
-    <p>Damage: <span id="dmg"></span></p><br>
-    <p>Speed: <span id="speed"></span></p>
-    <div id="content">
-    <div id="GameContainer">
-        <canvas id="Game" width="700" height="700"></canvas>
-        
-        <button id="playButton">PLAY</button><br>
-        <button id="Reset">Reset</button>
-        <div id="buffcards">
-        <button id="card1"></button>
-        <button id="card2"></button>
-        <button id="card3"></button>
+    <div id="wrapper">
+
+        <div id="playerStats">
+            <h2>Player</h2>
+            <p>Health: <span id="hp"></span></p>
+            <p>Damage: <span id="dmg"></span></p>
+            <p>Speed: <span id="speed"></span></p>
+        </div>
+
+        <div id="GameContainer">
+            <canvas id="Game" width="700" height="700"></canvas>
+            <button id="playButton">PLAY</button>
+            <div id="buffcards">
+                <button id="card1"></button>
+                <button id="card2"></button>
+                <button id="card3"></button>
+            </div>
+            <button id="Reset">Reset</button>
+        </div>
+
+        <div id="enemyStats">
+            <h2>Enemy</h2>
+            <p>Health: <span id="enemyHealth"></span></p>
+            <p>Damage: <span id="enemyDamage"></span></p>
+            <p>Wave: <span id="wave"></span></p>
         </div>
     </div>
+    <div id="bestWavePanel">
+        <h2>Best Wave</h2>
+        <span id="bestWave"></span>
     </div>
-
-    
-    <h1>Enemy Stats:</h1><br>
-
-    <p>Enemy Health: <span id="enemyHealth"></span></p><br>
-    <p>Enemy Damage: <span id="enemyDamage"></span></p>
-    <p>Wave: <span id="wave"></span></p>
-
 </body>
 </html>
