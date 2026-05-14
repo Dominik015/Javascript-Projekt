@@ -32,14 +32,12 @@ let wave = document.getElementById("wave")
     php.innerHTML = player.hp
     pdmg.innerHTML = player.dmg
     pspeed.innerHTML = player.speed
-    enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
-    enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
     if(waveManagement.Allenemies.length > 0){
 
     enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
     enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
     }
-    wave.innerHTML = waveManagement.wave
+    wave.innerHTML = player.level
     //else 
     if(!IsPaused && gamestarted == true){
 
@@ -66,7 +64,8 @@ let wave = document.getElementById("wave")
       IsPaused = true
       console.log("PAUSED, cards:", player.lvlUpCards)
 
-
+      waveManagement.LevelUp()
+      waveManagement.levelUp()
     }
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
@@ -76,6 +75,7 @@ let wave = document.getElementById("wave")
     enemy.update(player.x,player.y)
     waveManagement.update(player.x,player.y)
     waveManagement.drawEnemy(board.ctx)
+    waveManagement.spawnenemy()
     }
       if(!player.isLvlUp){
         IsPaused = false

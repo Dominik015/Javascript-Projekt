@@ -47,8 +47,4 @@ export default class enemy{
         }
     }
 
-    levelUp(){
-        this.hp +=2
-        this.dmg += 2
-    }
 }

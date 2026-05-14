@@ -12,7 +12,7 @@ export class Player{
         this.hp = 10
         this.xp = 0
         this.xpToLevelUp = 10
-        this.level = 0
+        this.level = 1
         this.dmg = 3
         this.isLvlUp = false
         this.lvlUpCards = []
