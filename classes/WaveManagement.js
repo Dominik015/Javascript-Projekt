@@ -10,7 +10,7 @@ export class WaveManagement{
         this.spawnEnemy = false
     }
 
-    update(playerX,playerY){
+    update(player){
         //SHORTER
         //this.enemies = this.enemies.filter(enemy=>enemy.hp>0)
         let enemies = []
@@ -31,7 +31,7 @@ export class WaveManagement{
         }
 
         for(let enemy of this.Allenemies){
-            enemy.update(playerX,playerY)
+            enemy.update(player)
         }
     }
 

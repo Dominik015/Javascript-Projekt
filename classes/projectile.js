@@ -50,11 +50,4 @@ export default class projectile{
         ctx.fillRect(this.x,this.y,this.width,this.height)
     }
 
-    ShootBullet(){
-        if(this.shootCd<=60){
-            this.projectiles.push(this)
-            this.shootCd==0
-        }
-        this.shootCd++
-    }
 }

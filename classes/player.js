@@ -16,7 +16,6 @@ export class Player{
         this.dmg = 3
         this.isLvlUp = false
         this.lvlUpCards = []
-        this.IsBuffChoosen = false
     }
 
     CreatePlayer(ctx){
