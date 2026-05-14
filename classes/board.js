@@ -1,3 +1,4 @@
+
 export class Board{
     constructor(){
         this.gameBoard = document.getElementById("Game")

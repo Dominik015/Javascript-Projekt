@@ -32,4 +32,5 @@ export class ProjectileManager{
             projectile.CreateBullet(ctx)
         }
     }
+
 }

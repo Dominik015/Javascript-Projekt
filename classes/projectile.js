@@ -1,3 +1,4 @@
+
 export default class projectile{
     constructor(playerX,playerY,Dmg){
         this.x = playerX
@@ -49,5 +50,4 @@ export default class projectile{
         ctx.fillStyle = "black"
         ctx.fillRect(this.x,this.y,this.width,this.height)
     }
-
 }

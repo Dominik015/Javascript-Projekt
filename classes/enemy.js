@@ -1,3 +1,4 @@
+
 export default class enemy{
     constructor(board){
         this.BoardWidht = board.gameBoard.width
@@ -7,8 +8,6 @@ export default class enemy{
         this.speed = 2
         this.hp = 3
         this.dmg = 2
-        this.DmgCd = 5
-        this.Cd = 0
         //spawn
         const side = Math.floor(Math.random() * 4)
         if(side == 0){
@@ -35,26 +34,19 @@ export default class enemy{
     }
 
 
-    update(player){
-        const dx = player.x - this.x
-        const dy = player.y - this.y
+    update(palyerX, playerY,playerHp){
+        const dx = palyerX - this.x
+        const dy = playerY - this.y
 
         const dist = Math.sqrt(dx*dx + dy*dy)
 
         this.x += (dx/dist) * this.speed
         this.y += (dy/dist) * this.speed
 
-        if(dist < 5){
-            if(this.Cd>=this.DmgCd)
-
-                player.hp -= this.dmg
-                this.Cd = 0
+        if(dist < 15){
+            playerHp -= this.dmg
         }
-        this.Cd++
     }
 
-    levelUp(){
-        this.hp +=2
-        this.dmg += 2
-    }
+
 }

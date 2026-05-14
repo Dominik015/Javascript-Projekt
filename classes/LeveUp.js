@@ -1,3 +1,4 @@
+
 export class LevelUp{
     constructor(){
         this.card = [
@@ -38,4 +39,5 @@ export class LevelUp{
 
         return shuffled.slice(0,3)
     }
+
 }

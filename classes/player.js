@@ -1,4 +1,5 @@
 
+
 const keys = {}
 export class Player{
     constructor(x,y,board){
@@ -12,10 +13,11 @@ export class Player{
         this.hp = 10
         this.xp = 0
         this.xpToLevelUp = 10
-        this.level = 0
+        this.level = 1
         this.dmg = 3
         this.isLvlUp = false
         this.lvlUpCards = []
+        this.IsBuffChoosen = false
     }
 
     CreatePlayer(ctx){
@@ -80,15 +82,19 @@ export class Player{
             if(event.key == "1"){
                 this.lvlUpCards[0].effect(this)
                 this.isLvlUp = false
+                document.getElementById("buffcards").style.display = "none"
             }
             else if(event.key == "2"){
                 this.lvlUpCards[1].effect(this)
                 this.isLvlUp = false
+                document.getElementById("buffcards").style.display = "none"
             } else if(event.key == "3"){
                 this.lvlUpCards[2].effect(this)
                 this.isLvlUp = false
+                document.getElementById("buffcards").style.display = "none"
             }
         }
     }
+
 
 }

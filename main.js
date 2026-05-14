@@ -10,6 +10,9 @@ import { ProjectileManager } from './classes/ProjectileManager.js';
 const levelUp = new LevelUp()
 const board = new Board()
 const player = new Player(100, 100,board)
+
+const enemy = new Enemy(board)
+
 const waveManagement = new WaveManagement(board)
 const projectileManager = new ProjectileManager()
 let IsPaused = false
@@ -19,6 +22,11 @@ const resetbutton = document.getElementById("Reset")
 let php = document.getElementById("hp")
 let pdmg = document.getElementById("dmg")
 let pspeed = document.getElementById("speed")
+let enemyHealth = document.getElementById("enemyHealth")
+let enemyDamage = document.getElementById("enemyDamage")
+let wave = document.getElementById("wave")
+
+
 
 
 
@@ -27,6 +35,14 @@ let pspeed = document.getElementById("speed")
     php.innerHTML = player.hp
     pdmg.innerHTML = player.dmg
     pspeed.innerHTML = player.speed
+
+    if(waveManagement.Allenemies.length > 0){
+
+    enemyHealth.innerHTML = waveManagement.Allenemies[0].hp
+    enemyDamage.innerHTML = waveManagement.Allenemies[0].dmg
+    }
+    wave.innerHTML = player.level
+
     //else 
     if(!IsPaused && gamestarted == true){
 
@@ -54,15 +70,25 @@ let pspeed = document.getElementById("speed")
       console.log("PAUSED, cards:", player.lvlUpCards)
 
 
+      waveManagement.LevelUp()
+      waveManagement.levelUp()
+
     }
     
     projectileManager.update(waveManagement.Allenemies,player.x,player.y,player.dmg)
     projectileManager.drawBullets(board.ctx)
 
 
+
     
     waveManagement.update(player)
     waveManagement.drawEnemy(board.ctx)
+
+ 
+    waveManagement.update(player.x,player.y)
+    waveManagement.drawEnemy(board.ctx)
+    waveManagement.spawnenemy()
+
     }
       if(!player.isLvlUp){
         IsPaused = false
